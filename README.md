@@ -30,7 +30,7 @@
 
 ---
 
-## API Server 정보
+## 프로젝트 정보
 
 ### Server 정보
 |      구분      | 정보                                                  |
@@ -43,35 +43,94 @@
 1. `Swagger-ui` 이용
    - [http://localhost:10010/wanted/swagger-ui/index.html](http://localhost:10010/wanted/swagger-ui/index.html)
 2. `IntelliJ .http` 이용
-   - `/http/wanted-api-test.http` 파일의 `request` 활용하여 API 테스트 요청  
+   - `/http/wanted-api-test.http` 파일의 `request` 활용하여 API 테스트 요청
+
+---
+
+## Database 정보
+- H2 Database Embedded 환경
+- URL : `jdbc:h2:~/wanted-posts`
+
+### Table 정의
+#### 회사 정보 `COMPANY`
+|  Column  |   Type   | Nullable | Description |
+|:--------:|:--------:|:--------:|-------------|
+|    ID    |  NUMBER  |    N     | SEQ ID `PK` |
+ |   NAME   | VARCHAR2 |    N     | 기업명         |
+| COUNTRY  | VARCHAR2 |    N     | 국가          |
+| LOCALITY | VARCHAR2 |    Y     | 소재지         |
+|  REGION  | VARCHAR2 |    Y     | 지역          |
+| CREATED  |   DATE   |    N     | 생성 일자       |
+| UPDATED  |   DATE   |    Y     | 수정 일자       |
+
+---
+
+#### 회사 공고 정보 `JOB_POSTS`
+|   Column   |   Type   | Nullable | Description |
+|:----------:|:--------:|:--------:|-------------|
+|     ID     |  NUMBER  |    N     | SEQ ID `PK` |
+| COMPANY_ID | VARCHAR2 |    N     | 기업 ID       |
+|  JOB_TYPE  | VARCHAR2 |    N     | 직무          |
+|  COUNTRY   | VARCHAR2 |    N     | 국가          |
+|  LOCALITY  | VARCHAR2 |    Y     | 소재지         |
+|   REGION   | VARCHAR2 |    Y     | 지역          |
+|  CREATED   |   DATE   |    N     | 생성 일자       |
+|  UPDATED   |   DATE   |    Y     | 수정 일자       |
 
 ---
 
 ## API 문서 정의
 
-### 공고 등록 API
-| 구분  | 정보                  |
-|:---:|---------------------|
-| 정의  | 채용 공고 등록 API        |
-| URL | `POST /api/v1/post` |
+### 회사 정보 등록 API
+| 구분  | 정보                     |
+|:---:|------------------------|
+| 정의  | 회사 정보 등록 API           |
+| URL | `POST /api/v1/company` |
+
 #### Request
 |      Field      |  Type  | MOC | Description |
-|:---------------:|:------:|:---:|-------------|
-|     company     | String |  M  | 기업명         |
-|     jobType     | String |  M  | 직무          |
-|     country     | String |  M  | 국가명         |
-|     locale      | Object |  O  | 위치 정보       |
-| locale.country  | String |  O  | 국가          |
-| locale.locality | String |  O  | 소재지         |
-|  locale.region  | String |  O  | 지역          |
+|:---------------:|:------:|:--:|-------------|
+|      name       | String |  M | 기업명         |
+|     locale      | Object |  M  | 위치 정보       |
+| locale.country  | String |  M | 국가          |
+| locale.locality | String |  O | 소재지         |
+|  locale.region  | String |  O | 지역          |
+
+#### Response
+| Field |  Type  | MOC | Description |
+|:-----:|:------:|:---:|-------------|
+|  id   | Number |  M  | 기업 ID       |
 
 ---
 
-### 공고 검색 API
-| 구분  | 정보                   |
-|:---:|----------------------|
-| 정의  | 채용 공고 목록 조회 API      |
-| URL | `POST /api/v1/posts` |
+### 공고 정보 등록 API
+| 구분  | 정보                      |
+|:---:|-------------------------|
+| 정의  | 채용 공고 등록 API            |
+| URL | `POST /api/v1/job/post` |
+
+#### Request
+|      Field      |  Type  | MOC | Description |
+|:---------------:|:------:|:--:|-------------|
+|    companyId    | String |  M | 기업 ID       |
+|     jobType     | String |  M | 직무          |
+|     locale      | Object |  M  | 위치 정보       |
+| locale.country  | String |  M | 국가          |
+| locale.locality | String |  O | 소재지         |
+|  locale.region  | String |  O | 지역          |
+
+#### Response
+| Field |  Type  | MOC | Description |
+|:-----:|:------:|:---:|-------------|
+|  id   | Number |  M  | 공고 ID       |
+
+---
+
+### 공고 목록 검색 API
+| 구분  | 정보                       |
+|:---:|--------------------------|
+| 정의  | 채용 공고 목록 조회 API          |
+| URL | `POST /api/v1/job/posts` |
 
 #### Request
 |      Field      |  Type  | MOC | Description                                                 |
@@ -85,24 +144,26 @@
 |  pageable.size  | Number |  O  | Page 크기                                                     |
 
 #### Response
-|      Field      |  Type  | MOC | Description |
-|:---------------:|:------:|:---:|-------------|
-|       id        | Number |  M  | 공고 ID       |
-|   companyName   | String |  M  | 기업명         |
-|     jobType     | String |  M  | 직무          |
-|     country     | String |  M  | 국가          |
-|   publishDate   |  Date  |  M  | 공고 게재일      |
-|    pageable     | Object |  M  | Page 정보     |
-| pageable.number | Number |  M  | Page 번호     | 
-|  pageable.size  | Number |  M  | Page 크기     |
+|      Field      |  Type   | MOC | Description                             |
+|:---------------:|:-------:|:---:|-----------------------------------------|
+|       id        | Number  |  M  | 공고 ID                                   |
+|   companyName   | String  |  M  | 기업명                                     |
+|     jobType     | String  |  M  | 직무                                      |
+|     locale      | String  |  O  | 위치<br>(country, locality, region 순 문자열) |
+|     created     |  Date   |  M  | 공고 게재일 (생성 일자)                          |
+|    pageable     | Object  |  M  | Page 정보                                 |
+| pageable.number | Number  |  M  | Page 번호                                 | 
+|  pageable.size  | Number  |  M  | Page 크기                                 |
+| pageable.first  | Boolean |  M  | 첫 Page 여부                               |
+|  pageable.last  | Boolean |  M  | 마지막 Page 여부                             |
 
 ---
 
-### 공고 랭킹 조회 API
+### 공고 랭킹 정보 조회 API
 | 구분  | 정보                                                                 |
 |:---:|--------------------------------------------------------------------|
 | 정의  | 채용 공고 관련 랭킹 조회 API<br>- 공고가 가장 많은 회사 TOP 3<br>- 공고가 가장 많은 국가 TOP 3 |
-| URL | `GET /api/v1/posts/ranking/{type}`                                 |
+| URL | `GET /api/v1/job/posts/ranking/{type}`                             |
 
 #### Request
 | Field |  Type  | MOC | Description                                                |
