@@ -30,9 +30,35 @@
 ---
 
 ## API 정의
+
+### Server 정보
+|      구분      | 정보                                            |
+|:------------:|-----------------------------------------------|
+|     Port     | `10010`                                       |
+| Context-Path | `wanted`                                      |
+| Swagger URL  | http://localhost:10010/wanted/swagger-ui.html |
+
+### 공고 등록 API
+| 구분  | 정보                  |
+|:---:|---------------------|
+| 정의  | 채용 공고 등록 API        |
+| URL | `POST /api/v1/post` |
+#### Request
+|      Field      |  Type  | MOC | Description |
+|:---------------:|:------:|:---:|-------------|
+|     company     | String |  M  | 기업명         |
+|     jobType     | String |  M  | 직무          |
+|     country     | String |  M  | 국가명         |
+|     locale      | Object |  O  | 위치 정보       |
+| locale.country  | String |  O  | 국가          |
+| locale.locality | String |  O  | 소재지         |
+|  locale.region  | String |  O  | 지역          |
+
 ### 공고 검색 API
-- 정의 : 채용 공고 목록 조회 API
-- URL : `POST /api/v1/posts`
+| 구분  | 정보                   |
+|:---:|----------------------|
+| 정의  | 채용 공고 목록 조회 API      |
+| URL | `POST /api/v1/posts` |
 
 #### Request
 |      Field      |  Type  | MOC | Description                                                 |
@@ -58,8 +84,10 @@
 |  pageable.size  | Number |  M  | Page 크기     |
 
 ### 공고 랭킹 조회 API
-- 정의 : 채용 공고 많이 올린 랭킹 조회 API
-- URL : `GET /api/v1/posts/ranking/{type}`
+| 구분  | 정보                                                                 |
+|:---:|--------------------------------------------------------------------|
+| 정의  | 채용 공고 관련 랭킹 조회 API<br>- 공고가 가장 많은 회사 TOP 3<br>- 공고가 가장 많은 국가 TOP 3 |
+| URL | `GET /api/v1/posts/ranking/{type}`                                 |
 
 #### Request
 | Field |  Type  | MOC | Description                                                |
@@ -72,3 +100,5 @@
 |  type   | String |  M  | 랭킹 조회 구분<br>COMPANY: 회사 랭킹<br>COUNTRY: 국가 랭킹 |
 | ranking | Number |  M  | 랭킹                                           |
 | ranker  | String |  M  | 랭킹 정보                                        |
+
+---
