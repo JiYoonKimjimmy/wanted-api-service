@@ -24,7 +24,7 @@
 3. 프로젝트 `jar` 실행
    ```shell
    cd $WORKSPACE/wanted-api-service/build/libs
-   java -jar wanted-api-service-0.0.1-SNAPSHOT.jar 
+   java -jar wanted-api-service-0.0.1.jar 
    ```
 
 ---
@@ -32,11 +32,17 @@
 ## API 정의
 
 ### Server 정보
-|      구분      | 정보                                            |
-|:------------:|-----------------------------------------------|
-|     Port     | `10010`                                       |
-| Context-Path | `wanted`                                      |
-| Swagger URL  | http://localhost:10010/wanted/swagger-ui.html |
+|      구분      | 정보                                                  |
+|:------------:|-----------------------------------------------------|
+|     Port     | `10010`                                             |
+| Context-Path | `wanted`                                            |
+| Swagger URL  | http://localhost:10010/wanted/swagger-ui/index.html |
+
+### API 테스트 방법
+1. `Swagger-ui` 이용
+   - [http://localhost:10010/wanted/swagger-ui/index.html](http://localhost:10010/wanted/swagger-ui/index.html)
+2. `IntelliJ .http` 이용
+   - `/http/wanted-api-test.http` 파일의 `request` 활용하여 API 테스트 요청  
 
 ### 공고 등록 API
 | 구분  | 정보                  |

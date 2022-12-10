@@ -3,3 +3,24 @@ server:
   port: 10010
   servlet:
     context-path: /wanted
+
+# spring
+spring:
+  profiles:
+    active: h2
+  jpa:
+    show-sql: true
+    generate-ddl: true
+
+---
+
+# h2 properties
+spring:
+  config:
+    activate:
+      on-profile: h2
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:~/wanted-posts
+    name: sa
+    password:

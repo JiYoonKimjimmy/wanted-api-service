@@ -1,0 +1,13 @@
+### POST hello
+POST http://localhost:10010/wanted/api/hello
+Content-Type: application/json
+
+{
+  "text": "Hello World"
+}
+
+### GET hello all
+GET http://localhost:10010/wanted/api/hello
+
+### GET hello
+GET http://localhost:10010/wanted/api/hello/4
