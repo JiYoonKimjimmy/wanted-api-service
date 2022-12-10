@@ -16,12 +16,16 @@ public class HelloService {
         return helloRepository.save(hello);
     }
 
+    public Hello findOneById(long id) {
+        return helloRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+    }
+
     public List<Hello> findAll() {
         return helloRepository.findAll();
     }
 
-    public Hello findOneById(long id) {
-        return helloRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+    public List<Hello> findAllByText(String text) {
+        return helloRepository.findAllByText(text);
     }
 
 }

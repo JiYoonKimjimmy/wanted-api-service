@@ -9,9 +9,10 @@
 ## 프로젝트 구성
 - Java 11
 - Spring Boot 2.7.6
-- Spring Security
 - Spring Data JPA
-- H2 Database
+- QueryDSL
+- H2 Database (Embedded)
+- Gradle 7.5.1
 
 ### 프로젝트 Build
 1. `git repository` clone or download
@@ -29,7 +30,7 @@
 
 ---
 
-## API 정의
+## API Server 정보
 
 ### Server 정보
 |      구분      | 정보                                                  |
@@ -43,6 +44,10 @@
    - [http://localhost:10010/wanted/swagger-ui/index.html](http://localhost:10010/wanted/swagger-ui/index.html)
 2. `IntelliJ .http` 이용
    - `/http/wanted-api-test.http` 파일의 `request` 활용하여 API 테스트 요청  
+
+---
+
+## API 문서 정의
 
 ### 공고 등록 API
 | 구분  | 정보                  |
@@ -59,6 +64,8 @@
 | locale.country  | String |  O  | 국가          |
 | locale.locality | String |  O  | 소재지         |
 |  locale.region  | String |  O  | 지역          |
+
+---
 
 ### 공고 검색 API
 | 구분  | 정보                   |
@@ -88,6 +95,8 @@
 |    pageable     | Object |  M  | Page 정보     |
 | pageable.number | Number |  M  | Page 번호     | 
 |  pageable.size  | Number |  M  | Page 크기     |
+
+---
 
 ### 공고 랭킹 조회 API
 | 구분  | 정보                                                                 |
