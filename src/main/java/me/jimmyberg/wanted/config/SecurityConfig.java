@@ -10,7 +10,7 @@ public class SecurityConfig implements AuthenticationProvider {
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        // API 인증 절차가 필요한 경우, 해당 함수에서 구현..
+        // TODO API 인증 절차가 필요한 경우, 해당 함수 구현
         System.out.println("authentication.getName() = " + authentication.getName());
         System.out.println("authentication.getCredentials() = " + authentication.getCredentials());
         return authentication;
