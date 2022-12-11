@@ -8,6 +8,7 @@ server:
 spring:
   profiles:
     active: h2
+  # jpa
   jpa:
     show-sql: true
     generate-ddl: true
@@ -16,6 +17,11 @@ spring:
     properties:
       hibernate:
         format_sql: true
+  # security
+  security:
+    user:
+      name: admin
+      password: admin1234
 
 ---
 
