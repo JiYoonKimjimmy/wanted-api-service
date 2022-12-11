@@ -12,19 +12,14 @@ spring:
     show-sql: true
     generate-ddl: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: validate
     properties:
       hibernate:
         format_sql: true
-  sql:
-    init:
-      mode: always
-      schema-locations: classpath:create-schema.sql
-      data-locations: classpath:insert-job-postings.sql
 
 ---
 
-# h2 properties
+# h2 datasource
 spring:
   config:
     activate:
@@ -34,3 +29,8 @@ spring:
     url: jdbc:h2:tcp://localhost:9092/~/h2/job-posts
     username: admin
     password: admin1234
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:create-schema.sql
+      data-locations: classpath:insert-data.sql

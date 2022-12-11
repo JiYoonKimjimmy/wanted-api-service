@@ -50,6 +50,32 @@
 - H2 Database Embedded 환경
 - URL : `jdbc:h2:tcp://localhost:9092/~/h2/job-posts`
 
+### Table 정의
+#### 회사 정보 `COMPANY`
+|  Column  |   Type   | Nullable | Description |
+|:--------:|:--------:|:--------:|-------------|
+|    ID    |  NUMBER  |    N     | SEQ ID `PK` |
+|   NAME   | VARCHAR2 |    N     | 기업명         |
+| COUNTRY  | VARCHAR2 |    N     | 국가          |
+| LOCALITY | VARCHAR2 |    Y     | 소재지         |
+|  REGION  | VARCHAR2 |    Y     | 지역          |
+| CREATED  |   DATE   |    N     | 생성 일자       |
+| UPDATED  |   DATE   |    Y     | 수정 일자       |
+
+---
+
+#### 회사 공고 정보 `JOB_POSTS`
+|   Column   |   Type   | Nullable | Description |
+|:----------:|:--------:|:--------:|-------------|
+|     ID     |  NUMBER  |    N     | SEQ ID `PK` |
+| COMPANY_ID | VARCHAR2 |    N     | 기업 ID `FK`  |
+|  JOB_TYPE  | VARCHAR2 |    N     | 직무          |
+|  COUNTRY   | VARCHAR2 |    N     | 국가          |
+|  LOCALITY  | VARCHAR2 |    Y     | 소재지         |
+|   REGION   | VARCHAR2 |    Y     | 지역          |
+|  CREATED   |   DATE   |    N     | 생성 일자       |
+|  UPDATED   |   DATE   |    Y     | 수정 일자       |
+
 ---
 
 ## API 문서 정의
@@ -80,7 +106,7 @@
 | 구분  | 정보                      |
 |:---:|-------------------------|
 | 정의  | 채용 공고 등록 API            |
-| URL | `POST /api/v1/job/post` |
+| URL | `POST /api/v1/job-post` |
 
 #### Request
 |      Field      |  Type  | MOC | Description |
@@ -103,7 +129,7 @@
 | 구분  | 정보                       |
 |:---:|--------------------------|
 | 정의  | 채용 공고 목록 조회 API          |
-| URL | `POST /api/v1/job/posts` |
+| URL | `POST /api/v1/job-posts` |
 
 #### Request
 |      Field      |  Type  | MOC | Description                                                 |
@@ -136,7 +162,7 @@
 | 구분  | 정보                                                                 |
 |:---:|--------------------------------------------------------------------|
 | 정의  | 채용 공고 관련 랭킹 조회 API<br>- 공고가 가장 많은 회사 TOP 3<br>- 공고가 가장 많은 국가 TOP 3 |
-| URL | `GET /api/v1/job/posts/ranking/{type}`                             |
+| URL | `GET /api/v1/job-posts/ranking/{type}`                             |
 
 #### Request
 | Field |  Type  | MOC | Description                                                |

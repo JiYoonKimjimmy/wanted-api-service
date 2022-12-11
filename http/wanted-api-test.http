@@ -1,16 +1,5 @@
-### POST hello
-POST http://localhost:10010/wanted/api/hello
-Content-Type: application/json
+### GET job posts
+GET http://localhost:10010/wanted/api/v1/job/posts
 
-{
-  "text": "Hello"
-}
-
-### GET hello
-GET http://localhost:10010/wanted/api/hello/4
-
-### GET hello all
-GET http://localhost:10010/wanted/api/hello
-
-### GET hello all by text
-GET http://localhost:10010/wanted/api/hello/conditions?text=Hello
+### GET job post by id
+GET http://localhost:10010/wanted/api/v1/job/post/1
