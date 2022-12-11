@@ -1,4 +1,4 @@
-package me.jimmyberg.wanted.api.hello;
+package me.jimmyberg.wanted.api.v0.hello;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package me.jimmyberg.wanted.api.hello;
+package me.jimmyberg.wanted.api.v0.hello;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
