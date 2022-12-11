@@ -11,7 +11,7 @@
 - Spring Boot 2.7.6
 - Spring Data JPA
 - QueryDSL
-- H2 Database (Embedded)
+- H2 Database
 - Gradle 7.5.1
 
 ### 프로젝트 Build
@@ -33,11 +33,10 @@
 ## 프로젝트 정보
 
 ### Server 정보
-|      구분      | 정보                                                  |
-|:------------:|-----------------------------------------------------|
-|     Port     | `10010`                                             |
-| Context-Path | `wanted`                                            |
-| Swagger URL  | http://localhost:10010/wanted/swagger-ui/index.html |
+|      구분      | 정보       |
+|:------------:|----------|
+|     Port     | `10010`  |
+| Context-Path | `wanted` |
 
 ### API 테스트 방법
 1. `Swagger-ui` 이용
@@ -49,33 +48,7 @@
 
 ## Database 정보
 - H2 Database Embedded 환경
-- URL : `jdbc:h2:~/wanted-posts`
-
-### Table 정의
-#### 회사 정보 `COMPANY`
-|  Column  |   Type   | Nullable | Description |
-|:--------:|:--------:|:--------:|-------------|
-|    ID    |  NUMBER  |    N     | SEQ ID `PK` |
- |   NAME   | VARCHAR2 |    N     | 기업명         |
-| COUNTRY  | VARCHAR2 |    N     | 국가          |
-| LOCALITY | VARCHAR2 |    Y     | 소재지         |
-|  REGION  | VARCHAR2 |    Y     | 지역          |
-| CREATED  |   DATE   |    N     | 생성 일자       |
-| UPDATED  |   DATE   |    Y     | 수정 일자       |
-
----
-
-#### 회사 공고 정보 `JOB_POSTS`
-|   Column   |   Type   | Nullable | Description |
-|:----------:|:--------:|:--------:|-------------|
-|     ID     |  NUMBER  |    N     | SEQ ID `PK` |
-| COMPANY_ID | VARCHAR2 |    N     | 기업 ID       |
-|  JOB_TYPE  | VARCHAR2 |    N     | 직무          |
-|  COUNTRY   | VARCHAR2 |    N     | 국가          |
-|  LOCALITY  | VARCHAR2 |    Y     | 소재지         |
-|   REGION   | VARCHAR2 |    Y     | 지역          |
-|  CREATED   |   DATE   |    N     | 생성 일자       |
-|  UPDATED   |   DATE   |    Y     | 수정 일자       |
+- URL : `jdbc:h2:tcp://localhost:9092/~/h2/job-posts`
 
 ---
 

@@ -11,9 +11,16 @@ spring:
   jpa:
     show-sql: true
     generate-ddl: true
+    hibernate:
+      ddl-auto: create-drop
     properties:
       hibernate:
         format_sql: true
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:create-schema.sql
+      data-locations: classpath:insert-data.sql
 
 ---
 
@@ -24,6 +31,6 @@ spring:
       on-profile: h2
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:~/wanted-posts
-    name: sa
-    password:
+    url: jdbc:h2:tcp://localhost:9092/~/h2/job-posts
+    username: admin
+    password: admin1234

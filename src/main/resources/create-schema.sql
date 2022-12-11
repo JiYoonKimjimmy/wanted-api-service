@@ -1,0 +1,23 @@
+DROP TABLE JOB_POSTINGS;
+
+CREATE TABLE JOB_POSTINGS
+(
+    ID                    VARCHAR(64),
+    URL                   VARCHAR(255),
+    CREATED               VARCHAR(27),
+    TITLE                 VARCHAR(255),
+    DATEPOSTED            VARCHAR(27),
+    EMPLOYMENTTYPE        VARCHAR(50),
+    ADDRESSCOUNTRY        VARCHAR(255),
+    ADDRESSLOCALITY       VARCHAR(255),
+    ADDRESSREGION         VARCHAR(255),
+    ADDRESS               VARCHAR(255),
+    NAME                  VARCHAR(255),
+    SAMEAS                VARCHAR(255),
+    LOGO                  VARCHAR(255),
+    EDUCATIONREQUIREMENTS VARCHAR(255),
+    CURRENCY              VARCHAR(5),
+    COUNTRYCODE           VARCHAR(5),
+    COMPETENCYREQUIRED    VARCHAR(255),
+    PRIMARY KEY (ID)
+);
