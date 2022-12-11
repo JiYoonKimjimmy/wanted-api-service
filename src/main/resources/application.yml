@@ -20,7 +20,7 @@ spring:
     init:
       mode: always
       schema-locations: classpath:create-schema.sql
-      data-locations: classpath:insert-data.sql
+      data-locations: classpath:insert-job-postings.sql
 
 ---
 
