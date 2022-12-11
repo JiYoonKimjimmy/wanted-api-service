@@ -1,12 +1,9 @@
 package me.jimmyberg.wanted.api.v1.jobpost;
 
+import me.jimmyberg.wanted.api.v1.jobpost.model.GetJobPostsRequest;
+import me.jimmyberg.wanted.api.v1.jobpost.model.GetJobPostsResponse;
 import me.jimmyberg.wanted.entity.JobPost;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/api/v1")
 @RestController
@@ -18,9 +15,9 @@ public class JobPostController {
         this.jobPostService = jobPostService;
     }
 
-    @GetMapping("/job-posts")
-    public List<JobPost> findAll() {
-        return jobPostService.findAll();
+    @PostMapping("/job-posts")
+    public GetJobPostsResponse findAll(@RequestBody GetJobPostsRequest request) {
+        return jobPostService.findAll(request);
     }
 
     @GetMapping("/job-post/{id}")

@@ -1,9 +1,9 @@
 package me.jimmyberg.wanted.api.v1.jobpost;
 
+import me.jimmyberg.wanted.api.v1.jobpost.model.GetJobPostsRequest;
+import me.jimmyberg.wanted.api.v1.jobpost.model.GetJobPostsResponse;
 import me.jimmyberg.wanted.entity.JobPost;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class JobPostService {
@@ -14,8 +14,9 @@ public class JobPostService {
         this.jobPostRepository = jobPostRepository;
     }
 
-    public List<JobPost> findAll() {
-        return jobPostRepository.findAll();
+    public GetJobPostsResponse findAll(GetJobPostsRequest request) {
+        return GetJobPostsResponse.of(jobPostRepository.findAllBy(request));
+//        return GetJobPostsResponse.of(request, jobPostRepository);
     }
 
     public JobPost findOne(long id) {
