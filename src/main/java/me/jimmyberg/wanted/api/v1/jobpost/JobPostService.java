@@ -16,7 +16,6 @@ public class JobPostService {
 
     public GetJobPostsResponse findAll(GetJobPostsRequest request) {
         return GetJobPostsResponse.of(jobPostRepository.findAllBy(request));
-//        return GetJobPostsResponse.of(request, jobPostRepository);
     }
 
     public JobPost findOne(long id) {
