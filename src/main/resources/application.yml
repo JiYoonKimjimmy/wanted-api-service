@@ -18,10 +18,10 @@ spring:
       hibernate:
         format_sql: true
   # security
-  security:
-    user:
-      name: admin
-      password: admin1234
+#  security:
+#    user:
+#      name: admin
+#      password: admin1234
 
 ---
 
