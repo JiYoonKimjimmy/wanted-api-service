@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 public class JobPost {
 
     @Id
-    @GeneratedValue
     private long id;
     private long companyId;
     private String jobType;

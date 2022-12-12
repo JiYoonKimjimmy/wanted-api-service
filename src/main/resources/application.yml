@@ -32,11 +32,16 @@ spring:
       on-profile: h2
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:tcp://localhost:9092/~/h2/job-posts
+#    url: jdbc:h2:tcp://localhost:9092/~/h2/job-posts
+    url: jdbc:h2:~/h2/wanted-job-post
     username: admin
     password: admin1234
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
   sql:
     init:
       mode: always
       schema-locations: classpath:create-schema.sql
-      data-locations: classpath:insert-data.sql
+      data-locations: classpath:insert-job-postings.sql,classpath:insert-data.sql
