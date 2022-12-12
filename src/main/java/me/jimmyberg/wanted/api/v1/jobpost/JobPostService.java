@@ -2,6 +2,7 @@ package me.jimmyberg.wanted.api.v1.jobpost;
 
 import me.jimmyberg.wanted.api.v1.jobpost.model.GetJobPostsRequest;
 import me.jimmyberg.wanted.api.v1.jobpost.model.GetJobPostsResponse;
+import me.jimmyberg.wanted.api.v1.jobpost.model.JobPostModel;
 import me.jimmyberg.wanted.entity.JobPost;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +16,7 @@ public class JobPostService {
     }
 
     public GetJobPostsResponse findAll(GetJobPostsRequest request) {
-        return GetJobPostsResponse.of(jobPostRepository.findAllBy(request));
+        return new GetJobPostsResponse(jobPostRepository.findAllBy(request).map(JobPostModel::of));
     }
 
     public JobPost findOne(long id) {

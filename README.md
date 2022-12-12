@@ -73,6 +73,7 @@
 |  COUNTRY   | VARCHAR2 |    N     | 국가          |
 |  LOCALITY  | VARCHAR2 |    Y     | 소재지         |
 |   REGION   | VARCHAR2 |    Y     | 지역          |
+|   POSTED   |   DATE   |    N     | 공고 일자       |
 |  CREATED   |   DATE   |    N     | 생성 일자       |
 |  UPDATED   |   DATE   |    Y     | 수정 일자       |
 

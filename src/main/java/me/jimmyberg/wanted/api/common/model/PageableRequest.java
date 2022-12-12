@@ -1,10 +1,13 @@
 package me.jimmyberg.wanted.api.common.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.data.domain.PageRequest;
 
 public class PageableRequest {
 
+    @Schema(description = "Page Number", defaultValue = "0")
     private int number;
+    @Schema(description = "Page Size", defaultValue = "10")
     private int size;
 
     public PageRequest toPageRequest() {
