@@ -27,7 +27,7 @@ public class SecurityConfig {
                 .csrf().disable()
                 // session 생성 없이 인증 처리
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                // 인증 처리 Filter 등록 - TODO AuthenticationFilter.class 인증 처리 설정
+                // 인증 처리 Filter 등록
                 .addFilterBefore(new AuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
@@ -39,7 +39,7 @@ public class SecurityConfig {
         // 허용 origin 설정
         configuration.setAllowedOrigins(List.of("*"));
         // 허용 method 설정
-        configuration.setAllowedMethods(List.of("*"));
+        configuration.setAllowedMethods(List.of("GET", "POST"));
         // 허용 header 설정
         configuration.setAllowedHeaders(List.of("*"));
 
