@@ -2,7 +2,6 @@ package me.jimmyberg.wanted.repository.jobpost;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import me.jimmyberg.wanted.api.v1.jobpost.model.FindJobPostsRequest;
-import me.jimmyberg.wanted.common.model.PageableRequest;
 import me.jimmyberg.wanted.entity.JobPost;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -26,13 +25,12 @@ public interface JobPostQRepository {
 
         @Override
         public Page<JobPost> findAllBy(FindJobPostsRequest request) {
-            PageableRequest pageable = request.getPageable();
-            PageRequest pageRequest = pageable.pageRequest();
+            PageRequest pageRequest = request.pageRequest();
 
             List<JobPost> content = jpaQueryFactory
                     .selectFrom(jobPost)
                     .where(request.generateWhere())
-                    .orderBy(pageable.orderBy(jobPost))
+                    .orderBy(request.orderBy(jobPost))
                     .offset(pageRequest.getOffset())
                     .limit(pageRequest.getPageSize())
                     .fetch();

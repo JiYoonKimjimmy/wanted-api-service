@@ -152,16 +152,15 @@
 | URL | `POST /api/v1/job-posts` |
 
 #### Request
-|       Field       |  Type  | MOC | Description             |
-|:-----------------:|:------:|:---:|-------------------------|
-|       text        | String |  M  | 검색 문자열                  |
-|     pageable      | Object |  O  | Page 정보                 |
-|  pageable.number  | Number |  O  | Page 번호                 | 
-|   pageable.size   | Number |  O  | Page 크기                 |
-| pageable.fromDate | String |  O  | 검색 시작 일자 (`yyyyMMdd`)   |
-|  pageable.toDate  | String |  O  | 검색 종료 일자 (`yyyyMMdd`)   |
-|  pageable.sortBy  | String |  O  | 정렬 기준 (default: `id`)   |
-|  pageable.order   | String |  O  | 정렬 방향 (default: `DESC`) |
+|  Field   |  Type  | MOC | Description                                                                      |
+|:--------:|:------:|:---:|----------------------------------------------------------------------------------|
+|   text   | String |  M  | 검색 문자열                                                                           |
+|  number  | Number |  O  | Page 번호                                                                          | 
+|   size   | Number |  O  | Page 크기                                                                          |
+| fromDate | String |  O  | 검색 시작 일자 (`yyyyMMdd`)                                                            |
+|  toDate  | String |  O  | 검색 종료 일자 (`yyyyMMdd`)                                                            |
+|  sortBy  | String |  O  | 정렬 기준 (default: `ID`)<br>ID: 공고 ID<br>COMPANY: 기업<br>JOB_TYPE: 직무<br>COUNTRY: 국가 |
+|  order   | String |  O  | 정렬 방향 (default: `DESC`)                                                          |
 
 #### Response
 |        Field        |  Type   | MOC | Description |

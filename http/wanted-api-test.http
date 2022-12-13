@@ -18,14 +18,12 @@ Content-Type: application/json
 
 {
   "text": "서버개발",
-  "pageable": {
-    "number": 0,
-    "size": 10,
-    "fromDate": "20221210",
-    "toDate": "20221231",
-    "sortBy": "jobType",
-    "order": "DESC"
-  }
+  "number": 0,
+  "size": 10,
+  "fromDate": "20221210",
+  "toDate": "20221231",
+  "sortBy": "COMPANY",
+  "order": "ASC"
 }
 
 ### GET find job post by id

@@ -23,8 +23,8 @@ public class PageableRequest {
     private String fromDate = "19000101";
     @Schema(description = "조회 종료 일자")
     private String toDate = "99991231";
-    @Schema(description = "정렬 기준", defaultValue = "id")
-    private String sortBy = "id";
+    @Schema(description = "정렬 기준", defaultValue = "ID")
+    private String sortBy = "ID";
     @Schema(description = "정렬 방향", defaultValue = "DESC")
     private Order order = Order.DESC;
 
@@ -38,12 +38,15 @@ public class PageableRequest {
     /**
      * where query 생성
      */
-    public BooleanExpression generateWhere() {
+    public BooleanExpression periodWhere() {
         LocalDateTime fromDate = LocalDateTime.parse(this.fromDate + "000000", Constant.DATE_TIME_FORMAT_yyyyMMddHHmmss);
         LocalDateTime toDate = LocalDateTime.parse(this.toDate + "235959", Constant.DATE_TIME_FORMAT_yyyyMMddHHmmss);
         return jobPost.posted.between(fromDate, toDate);
     }
 
+    /**
+     * order by query 생성
+     */
     public OrderSpecifier<String> orderBy(Path<?> entity) {
         Path<String> fieldPath = Expressions.path(String.class, entity, this.sortBy);
         return new OrderSpecifier<>(this.order, fieldPath);
