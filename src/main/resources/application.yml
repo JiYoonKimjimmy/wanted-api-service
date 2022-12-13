@@ -17,6 +17,12 @@ spring:
     properties:
       hibernate:
         format_sql: true
+  # sql
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:sql/create-schema.sql
+      data-locations: classpath:sql/insert-company.sql,classpath:sql/insert-job-posts.sql,classpath:sql/insert-job-post-ranking.sql
   # security
 #  security:
 #    user:
@@ -42,8 +48,3 @@ spring:
     console:
       enabled: true
       path: /h2-console
-  sql:
-    init:
-      mode: always
-      schema-locations: classpath:create-schema.sql
-      data-locations: classpath:insert-job-postings.sql,classpath:insert-data.sql

@@ -50,8 +50,15 @@
 - H2 Database Embedded 환경
 - URL : `jdbc:h2:tcp://localhost:9092/~/h2/job-posts`
 
+### DB 테스트 정보 등록 방법
+- 테스트 데이터는 Spring SQL 자동 init 설정을 통해 등록
+- `application.yml > spring.sql.init.data-locations` 해당 프로퍼티에 등록된 SQL 파일에 테스트 데이터 INSERT 문 정의 
+  - `insert-company.sql` : `COMPANY` 테스트 정보
+  - `insert-job-posts.sql` : `JOB_POSTS` 테스트 정보
+  - `insert-job-post-ranking.sql` : `JOB_POST_RANKING` 테스트 정보 
+
 ### Table 정의
-#### 회사 정보 `COMPANY`
+#### 기업 정보 `COMPANY`
 |  Column  |   Type   | Nullable | Description |
 |:--------:|:--------:|:--------:|-------------|
 |    ID    |  NUMBER  |    N     | SEQ ID `PK` |
@@ -64,7 +71,7 @@
 
 ---
 
-#### 회사 공고 정보 `JOB_POSTS`
+#### 채용 공고 정보 `JOB_POSTS`
 |   Column   |   Type   | Nullable | Description |
 |:----------:|:--------:|:--------:|-------------|
 |     ID     |  NUMBER  |    N     | SEQ ID `PK` |
@@ -79,22 +86,34 @@
 
 ---
 
+#### 채용 공고 랭킹 정보 `JOB_POST_RANKING`
+| Column  |   Type   | Nullable | Description                         |
+|:-------:|:--------:|:--------:|-------------------------------------|
+|   ID    |  NUMBER  |    N     | SEQ ID `PK`                         |
+|  TYPE   | VARCHAR2 |    N     | 랭킹 구분<br>COMPANY: 기업<br>COUNTRY: 국가 |
+| RANKER  | VARCHAR2 |    N     | 랭커 정보 (기업명 or 국가명)                  |
+|  COUNT  |  NUMBER  |    N     | 공고 등록 수                             |
+| CREATED |   DATE   |    N     | 생성 일자                               |
+| UPDATED |   DATE   |    Y     | 수정 일자                               |
+
+---
+
 ## API 문서 정의
 
-### 회사 정보 등록 API
+### 기업 정보 등록 API
 | 구분  | 정보                     |
 |:---:|------------------------|
-| 정의  | 회사 정보 등록 API           |
+| 정의  | 기업 정보 등록 API           |
 | URL | `POST /api/v1/company` |
 
 #### Request
 |      Field      |  Type  | MOC | Description |
-|:---------------:|:------:|:--:|-------------|
-|      name       | String |  M | 기업명         |
+|:---------------:|:------:|:---:|-------------|
+|      name       | String |  M  | 기업명         |
 |     locale      | Object |  M  | 위치 정보       |
-| locale.country  | String |  M | 국가          |
-| locale.locality | String |  O | 소재지         |
-|  locale.region  | String |  O | 지역          |
+| locale.country  | String |  M  | 국가          |
+| locale.locality | String |  O  | 소재지         |
+|  locale.region  | String |  O  | 지역          |
 
 #### Response
 | Field |  Type  | MOC | Description |
@@ -111,13 +130,13 @@
 
 #### Request
 |      Field      |  Type  | MOC | Description |
-|:---------------:|:------:|:--:|-------------|
-|    companyId    | String |  M | 기업 ID       |
-|     jobType     | String |  M | 직무          |
+|:---------------:|:------:|:---:|-------------|
+|    companyId    | String |  M  | 기업 ID       |
+|     jobType     | String |  M  | 직무          |
 |     locale      | Object |  M  | 위치 정보       |
-| locale.country  | String |  M | 국가          |
-| locale.locality | String |  O | 소재지         |
-|  locale.region  | String |  O | 지역          |
+| locale.country  | String |  M  | 국가          |
+| locale.locality | String |  O  | 소재지         |
+|  locale.region  | String |  O  | 지역          |
 
 #### Response
 | Field |  Type  | MOC | Description |
@@ -144,18 +163,21 @@
 |  pageable.size  | Number |  O  | Page 크기                                                     |
 
 #### Response
-|      Field      |  Type   | MOC | Description                             |
-|:---------------:|:-------:|:---:|-----------------------------------------|
-|       id        | Number  |  M  | 공고 ID                                   |
-|   companyName   | String  |  M  | 기업명                                     |
-|     jobType     | String  |  M  | 직무                                      |
-|     locale      | String  |  O  | 위치<br>(country, locality, region 순 문자열) |
-|     created     |  Date   |  M  | 공고 게재일 (생성 일자)                          |
-|    pageable     | Object  |  M  | Page 정보                                 |
-| pageable.number | Number  |  M  | Page 번호                                 | 
-|  pageable.size  | Number  |  M  | Page 크기                                 |
-| pageable.first  | Boolean |  M  | 첫 Page 여부                               |
-|  pageable.last  | Boolean |  M  | 마지막 Page 여부                             |
+|        Field        |  Type   | MOC | Description |
+|:-------------------:|:-------:|:---:|-------------|
+|       number        | Number  |  M  | Page 번호     | 
+|        size         | Number  |  M  | Page 크기     |
+|     totalPages      | Number  |  M  | 전체 Page 수   |
+|    totalElements    | Number  |  M  | 전체 항목 수     |
+|  numberOfElements   | Number  |  M  | Page 당 항목 수 |
+|        first        | Boolean |  M  | 첫 Page 여부   |
+|        last         | Boolean |  M  | 마지막 Page 여부 |
+|       content       |  Array  |  M  | 채용 공고 정보 목록 |
+ |     content.id      | Number  |  M  | 채용 공고 ID    |
+ | content.companyName | String  |  M  | 기업명         |
+ |   content.jobType   | String  |  M  | 직무          |
+ |   content.locale    | String  |  M  | 위치          |
+ |   content.posted    | String  |  M  | 공고 등록 일자    |
 
 ---
 
