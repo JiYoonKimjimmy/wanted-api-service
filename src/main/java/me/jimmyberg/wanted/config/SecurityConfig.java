@@ -36,8 +36,11 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         // TODO CORS 설정
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://www.example.com"));
+        // 허용 origin 설정
+        configuration.setAllowedOrigins(List.of("*"));
+        // 허용 method 설정
         configuration.setAllowedMethods(List.of("*"));
+        // 허용 header 설정
         configuration.setAllowedHeaders(List.of("*"));
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
