@@ -25,10 +25,10 @@ spring:
       schema-locations: classpath:sql/create-schema.sql
       data-locations: classpath:sql/insert-companies.sql,classpath:sql/insert-job-posts.sql,classpath:sql/insert-job-post-ranking.sql
   # security
-#  security:
-#    user:
-#      name: admin
-#      password: admin1234
+  security:
+    user:
+      name: admin
+      password: admin1234
 
 ---
 
