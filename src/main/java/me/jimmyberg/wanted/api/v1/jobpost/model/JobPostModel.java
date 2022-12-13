@@ -30,7 +30,7 @@ public class JobPostModel {
 
     private void setLocale(JobPost jobPost) {
         this.locale = Stream
-                .of(jobPost.getCountry(), jobPost.getLocality(), jobPost.getRegion())
+                .of(jobPost.getLocale().getCountry(), jobPost.getLocale().getLocality(), jobPost.getLocale().getRegion())
                 .filter(Objects::nonNull)
                 .collect(Collectors.joining(", "));
     }

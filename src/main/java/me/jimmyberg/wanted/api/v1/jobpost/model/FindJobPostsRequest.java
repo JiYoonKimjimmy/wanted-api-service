@@ -15,14 +15,13 @@ public class FindJobPostsRequest {
 
     /**
      * where query 생성
-     * @return
      */
     public BooleanBuilder generateWhere() {
         BooleanBuilder where = new BooleanBuilder();
         if (text != null) {
             text = "%" + text + "%";
             Arrays
-                .asList(jobPost.company.name.like(text), jobPost.jobType.like(text), jobPost.country.like(text))
+                .asList(jobPost.company.name.like(text), jobPost.jobType.like(text), jobPost.locale.country.like(text))
                 .forEach(where::or);
         }
         where.and(pageable.generateWhere());

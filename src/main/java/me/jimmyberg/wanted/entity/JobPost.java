@@ -1,5 +1,7 @@
 package me.jimmyberg.wanted.entity;
 
+import me.jimmyberg.wanted.common.embeddable.Locale;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -10,9 +12,8 @@ public class JobPost {
     @Id
     private long id;
     private String jobType;
-    private String country;
-    private String locality;
-    private String region;
+    @Embedded
+    private Locale locale;
     private LocalDateTime posted;
     private LocalDateTime created;
     private LocalDateTime updated;
@@ -45,28 +46,12 @@ public class JobPost {
         this.jobType = jobType;
     }
 
-    public String getCountry() {
-        return country;
+    public Locale getLocale() {
+        return locale;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getLocality() {
-        return locality;
-    }
-
-    public void setLocality(String locality) {
-        this.locality = locality;
-    }
-
-    public String getRegion() {
-        return region;
-    }
-
-    public void setRegion(String region) {
-        this.region = region;
+    public void setLocale(Locale locale) {
+        this.locale = locale;
     }
 
     public LocalDateTime getPosted() {
