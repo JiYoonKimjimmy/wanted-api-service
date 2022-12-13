@@ -185,18 +185,20 @@
 | 구분  | 정보                                                                 |
 |:---:|--------------------------------------------------------------------|
 | 정의  | 채용 공고 관련 랭킹 조회 API<br>- 공고가 가장 많은 회사 TOP 3<br>- 공고가 가장 많은 국가 TOP 3 |
-| URL | `GET /api/v1/job-posts/ranking/{type}`                             |
+| URL | `GET /api/v1/job-post/ranking?type={type}&limit={limit}`           |
 
 #### Request
-| Field |  Type  | MOC | Description                                                |
-|:-----:|:------:|:---:|------------------------------------------------------------|
-| type  | String |  O  | 랭킹 조회 구분 (default: 전체)<br>COMPANY: 회사 랭킹<br>COUNTRY: 국가 랭킹 | 
+| Field |  Type  | MOC | Description                                                      |
+|:-----:|:------:|:---:|------------------------------------------------------------------|
+| type  | String |  O  | 랭킹 조회 구분 (default- null: 전체)<br>COMPANY: 회사 랭킹<br>COUNTRY: 국가 랭킹 |
+| limit | Number |  O  | 랭킹 목록 크기                                                         | 
 
 #### Response
-|  Field  |  Type  | MOC | Description                                  |
-|:-------:|:------:|:---:|----------------------------------------------|
-|  type   | String |  M  | 랭킹 조회 구분<br>COMPANY: 회사 랭킹<br>COUNTRY: 국가 랭킹 |
-| ranking | Number |  M  | 랭킹                                           |
-| ranker  | String |  M  | 랭킹 정보                                        |
+| Field  |  Type  | MOC | Description                                  |
+|:------:|:------:|:---:|----------------------------------------------|
+|  type  | String |  M  | 랭킹 조회 구분<br>COMPANY: 회사 랭킹<br>COUNTRY: 국가 랭킹 |
+|  rank  | Number |  M  | 랭킹 순위                                        |
+| ranker | String |  M  | 랭킹 정보                                        |
+| count  | Number |  M  | 공고 등록 건수                                     |
 
 ---
