@@ -1,4 +1,4 @@
-package me.jimmyberg.wanted.entity;
+package me.jimmyberg.wanted.api.v0.jobposting;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

@@ -1,6 +1,5 @@
 package me.jimmyberg.wanted.api.v0.jobposting;
 
-import me.jimmyberg.wanted.entity.JobPosting;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
