@@ -1,4 +1,4 @@
-package me.jimmyberg.wanted.api.v1.jobpost;
+package me.jimmyberg.wanted.repository.jobpost;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import me.jimmyberg.wanted.api.v1.jobpost.model.GetJobPostsRequest;

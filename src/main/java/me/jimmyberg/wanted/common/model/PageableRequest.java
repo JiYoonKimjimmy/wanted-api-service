@@ -1,4 +1,4 @@
-package me.jimmyberg.wanted.api.common.model;
+package me.jimmyberg.wanted.common.model;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.data.domain.PageRequest;

@@ -1,6 +1,6 @@
 package me.jimmyberg.wanted.api.v1.jobpost.model;
 
-import me.jimmyberg.wanted.api.common.model.PageableRequest;
+import me.jimmyberg.wanted.common.model.PageableRequest;
 
 public class GetJobPostsRequest {
 

@@ -1,5 +1,6 @@
 package me.jimmyberg.wanted.api.v1.jobpost;
 
+import me.jimmyberg.wanted.repository.jobpost.JobPostRepository;
 import me.jimmyberg.wanted.api.v1.jobpost.model.GetJobPostsRequest;
 import me.jimmyberg.wanted.api.v1.jobpost.model.GetJobPostsResponse;
 import me.jimmyberg.wanted.api.v1.jobpost.model.JobPostModel;
