@@ -1,11 +1,12 @@
 package me.jimmyberg.wanted.entity;
 
+import me.jimmyberg.wanted.api.v1.company.model.SaveCompanyRequest;
 import me.jimmyberg.wanted.common.embeddable.Locale;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Table(name = "COMPANY")
+@Table(name = "COMPANIES")
 @Entity
 public class Company {
 
@@ -17,6 +18,13 @@ public class Company {
     private Locale locale;
     private LocalDateTime created;
     private LocalDateTime updated;
+
+    public static Company of(SaveCompanyRequest request) {
+        Company entity = new Company();
+        entity.setName(request.getName());
+        entity.setLocale(request.getLocale());
+        return entity;
+    }
 
     public long getId() {
         return id;
@@ -46,15 +54,18 @@ public class Company {
         return created;
     }
 
-    public void setCreated(LocalDateTime created) {
-        this.created = created;
+    @PostPersist
+    public void setCreated() {
+        this.created = LocalDateTime.now();
     }
 
     public LocalDateTime getUpdated() {
         return updated;
     }
 
-    public void setUpdated(LocalDateTime updated) {
-        this.updated = updated;
+    @PostUpdate
+    public void setUpdated() {
+        this.updated = LocalDateTime.now();
     }
+
 }

@@ -9,7 +9,7 @@ public class SaveJobPostRequest {
     private long companyId;
     @Schema(description = "직무")
     private String jobType;
-    @Schema(description = "위치")
+    @Schema(description = "위치 정보")
     private Locale locale;
 
     public long getCompanyId() {

@@ -1,3 +1,25 @@
+### POST save company
+POST http://localhost:10010/wanted/api/v1/company
+Content-Type: application/json
+
+{
+  "name": "원티드베이커리",
+  "locale": {
+    "country": "Korea",
+    "locality": "GangNam",
+    "region": "GangNam"
+  }
+}
+
+### POST find companies
+POST http://localhost:10010/wanted/api/v1/companies
+Content-Type: application/json
+
+{
+  "number": 0,
+  "size": 10
+}
+
 ### POST save job post
 POST http://localhost:10010/wanted/api/v1/job-post
 Content-Type: application/json
@@ -17,13 +39,13 @@ POST http://localhost:10010/wanted/api/v1/job-posts
 Content-Type: application/json
 
 {
-  "text": "서버개발",
+  "text": "개발",
   "number": 0,
   "size": 10,
   "fromDate": "20221210",
   "toDate": "20221231",
   "sortBy": "COMPANY",
-  "order": "ASC"
+  "order": "DESC"
 }
 
 ### GET find job post by id

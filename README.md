@@ -53,7 +53,7 @@
 ### DB 테스트 정보 등록 방법
 - 테스트 데이터는 Spring SQL 자동 init 설정을 통해 등록
 - `application.yml > spring.sql.init.data-locations` 해당 프로퍼티에 등록된 SQL 파일에 테스트 데이터 INSERT 문 정의 
-  - `insert-company.sql` : `COMPANY` 테스트 정보
+  - `insert-companies.sql` : `COMPANY` 테스트 정보
   - `insert-job-posts.sql` : `JOB_POSTS` 테스트 정보
   - `insert-job-post-ranking.sql` : `JOB_POST_RANKING` 테스트 정보 
 
