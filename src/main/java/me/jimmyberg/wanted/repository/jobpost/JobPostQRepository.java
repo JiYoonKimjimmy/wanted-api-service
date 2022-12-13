@@ -2,13 +2,15 @@ package me.jimmyberg.wanted.repository.jobpost;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import me.jimmyberg.wanted.api.v1.jobpost.model.FindJobPostsRequest;
+import me.jimmyberg.wanted.common.model.PageableRequest;
 import me.jimmyberg.wanted.entity.JobPost;
-import me.jimmyberg.wanted.entity.QJobPost;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 
 import java.util.List;
+
+import static me.jimmyberg.wanted.entity.QJobPost.jobPost;
 
 public interface JobPostQRepository {
 
@@ -24,22 +26,25 @@ public interface JobPostQRepository {
 
         @Override
         public Page<JobPost> findAllBy(FindJobPostsRequest request) {
-            QJobPost entity = QJobPost.jobPost;
-            PageRequest pageable = request.getPageable().toPageRequest();
+            PageableRequest pageable = request.getPageable();
+            PageRequest pageRequest = pageable.pageRequest();
 
             List<JobPost> content = jpaQueryFactory
-                    .selectFrom(entity)
-                    .offset(pageable.getOffset())
-                    .limit(pageable.getPageSize())
+                    .selectFrom(jobPost)
+                    .where(request.generateWhere())
+                    .orderBy(pageable.orderBy(jobPost))
+                    .offset(pageRequest.getOffset())
+                    .limit(pageRequest.getPageSize())
                     .fetch();
 
             Long count = jpaQueryFactory
-                    .select(entity.count())
-                    .from(entity)
+                    .select(jobPost.count())
+                    .from(jobPost)
                     .fetchOne();
 
-            return new PageImpl<>(content, pageable, count == null ? 0 : count);
+            return new PageImpl<>(content, pageRequest, count == null ? 0 : count);
         }
 
     }
+
 }

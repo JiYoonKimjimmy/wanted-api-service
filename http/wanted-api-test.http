@@ -3,9 +3,14 @@ POST http://localhost:10010/wanted/api/v1/job-posts
 Content-Type: application/json
 
 {
+  "text": "프론트",
   "pageable": {
     "number": 0,
-    "size": 10
+    "size": 10,
+    "fromDate": "20221210",
+    "toDate": "20221211",
+    "sortBy": "jobType",
+    "order": "DESC"
   }
 }
 

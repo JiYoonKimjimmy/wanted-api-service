@@ -6,13 +6,13 @@ VALUES (1, '개발', 'Korea', 'Seoul', 'Songpa', PARSEDATETIME('20221210093010',
        (1, '프론트엔드개발', 'Korea', 'Seoul', 'Songpa', PARSEDATETIME('20221210093010', 'yyyyMMddHHmmss'), NOW());
 
 INSERT INTO JOB_POSTS (COMPANY_ID, JOB_TYPE, COUNTRY, LOCALITY, REGION, POSTED, CREATED)
-VALUES (2, '개발', 'United States', 'New York', null, PARSEDATETIME('20221210093010', 'yyyyMMddHHmmss'), NOW()),
-       (2, '백엔드개발', 'United States', 'New York', null, PARSEDATETIME('20221210093010', 'yyyyMMddHHmmss'), NOW()),
-       (2, '프론트엔드개발', 'United States', 'New York', null, PARSEDATETIME('20221210093010', 'yyyyMMddHHmmss'), NOW());
+VALUES (2, '개발', 'United States', 'New York', null, PARSEDATETIME('20221211093010', 'yyyyMMddHHmmss'), NOW()),
+       (2, '백엔드개발', 'United States', 'New York', null, PARSEDATETIME('20221211093010', 'yyyyMMddHHmmss'), NOW()),
+       (2, '프론트엔드개발', 'United States', 'New York', null, PARSEDATETIME('20221211093010', 'yyyyMMddHHmmss'), NOW());
 
 INSERT INTO JOB_POSTS (COMPANY_ID, JOB_TYPE, COUNTRY, LOCALITY, REGION, POSTED, CREATED)
-VALUES (3, '개발', 'United Kingdom', 'London', null, PARSEDATETIME('20221210093010', 'yyyyMMddHHmmss'), NOW()),
-       (3, '개발', 'United Kingdom', 'London', null, PARSEDATETIME('20221210093010', 'yyyyMMddHHmmss'), NOW());
+VALUES (3, '개발', 'United Kingdom', 'London', null, PARSEDATETIME('20221212093010', 'yyyyMMddHHmmss'), NOW()),
+       (3, '개발', 'United Kingdom', 'London', null, PARSEDATETIME('20221212093010', 'yyyyMMddHHmmss'), NOW());
 
 INSERT INTO JOB_POSTS (COMPANY_ID, JOB_TYPE, COUNTRY, LOCALITY, REGION, POSTED, CREATED)
-VALUES (4, '개발', 'Korea', 'Seoul', 'Yeouido', PARSEDATETIME('20221210093010', 'yyyyMMddHHmmss'), NOW());
+VALUES (4, '개발', 'Korea', 'Seoul', 'Yeouido', PARSEDATETIME('20221213093010', 'yyyyMMddHHmmss'), NOW());
