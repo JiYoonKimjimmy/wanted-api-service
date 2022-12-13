@@ -72,7 +72,7 @@ spring:
 ---
 
 ### Table 정의
-#### `COMPANY` 기업 정보
+#### `COMPANIES` 기업 정보
 |  Column  |   Type   | Nullable | Description |
 |:--------:|:--------:|:--------:|-------------|
 |    ID    |  NUMBER  |    N     | SEQ ID `PK` |
@@ -84,17 +84,17 @@ spring:
 | UPDATED  |   DATE   |    Y     | 수정 일자       |
 
 #### `JOB_POSTS` 채용 공고 정보
-|   Column   |   Type   | Nullable | Description |
-|:----------:|:--------:|:--------:|-------------|
-|     ID     |  NUMBER  |    N     | SEQ ID `PK` |
-| COMPANY_ID | VARCHAR2 |    N     | 기업 ID `FK`  |
-|  JOB_TYPE  | VARCHAR2 |    N     | 직무          |
-|  COUNTRY   | VARCHAR2 |    N     | 국가          |
-|  LOCALITY  | VARCHAR2 |    Y     | 소재지         |
-|   REGION   | VARCHAR2 |    Y     | 지역          |
-|   POSTED   |   DATE   |    N     | 공고 일자       |
-|  CREATED   |   DATE   |    N     | 생성 일자       |
-|  UPDATED   |   DATE   |    Y     | 수정 일자       |
+|   Column   |   Type   | Nullable | Description                 |
+|:----------:|:--------:|:--------:|-----------------------------|
+|     ID     |  NUMBER  |    N     | SEQ ID `PK`                 |
+| COMPANY_ID | VARCHAR2 |    N     | 기업 ID `FK` - `COMPANIES.ID` |
+|  JOB_TYPE  | VARCHAR2 |    N     | 직무                          |
+|  COUNTRY   | VARCHAR2 |    N     | 국가                          |
+|  LOCALITY  | VARCHAR2 |    Y     | 소재지                         |
+|   REGION   | VARCHAR2 |    Y     | 지역                          |
+|   POSTED   |   DATE   |    N     | 공고 일자                       |
+|  CREATED   |   DATE   |    N     | 생성 일자                       |
+|  UPDATED   |   DATE   |    Y     | 수정 일자                       |
 
 #### `JOB_POST_RANKING` 채용 공고 랭킹 정보
 | Column  |   Type   | Nullable | Description                         |
