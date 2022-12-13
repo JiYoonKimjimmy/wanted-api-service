@@ -8,8 +8,8 @@ import java.util.List;
 
 public class JobPostRankingModel {
 
-    private JobPostRankingType type;
     private int rank;
+    private JobPostRankingType type;
     private String ranker;
     private long count;
 
@@ -29,20 +29,20 @@ public class JobPostRankingModel {
         return result;
     }
 
-    public JobPostRankingType getType() {
-        return type;
-    }
-
-    public void setType(JobPostRankingType type) {
-        this.type = type;
-    }
-
     public int getRank() {
         return rank;
     }
 
     public void setRank(int rank) {
         this.rank = rank;
+    }
+
+    public JobPostRankingType getType() {
+        return type;
+    }
+
+    public void setType(JobPostRankingType type) {
+        this.type = type;
     }
 
     public String getRanker() {

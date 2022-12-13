@@ -110,8 +110,8 @@
 |      Field      |  Type  | MOC | Description |
 |:---------------:|:------:|:---:|-------------|
 |      name       | String |  M  | 기업명         |
-|     locale      | Object |  M  | 위치 정보       |
-| locale.country  | String |  M  | 국가          |
+|     locale      | Object |  O  | 위치 정보       |
+| locale.country  | String |  O  | 국가          |
 | locale.locality | String |  O  | 소재지         |
 |  locale.region  | String |  O  | 지역          |
 
@@ -119,6 +119,42 @@
 | Field |  Type  | MOC | Description |
 |:-----:|:------:|:---:|-------------|
 |  id   | Number |  M  | 기업 ID       |
+
+---
+
+### 기업 목록 조회 API
+| 구분  | 정보                       |
+|:---:|--------------------------|
+| 정의  | 기업 목록 조회 API             |
+| URL | `POST /api/v1/companies` |
+
+#### Request
+|  Field   |  Type  | MOC | Description                        |
+|:--------:|:------:|:---:|------------------------------------|
+|  number  | Number |  O  | Page 번호                            | 
+|   size   | Number |  O  | Page 크기                            |
+| fromDate | String |  O  | 검색 시작 일자 (`yyyyMMdd`)              |
+|  toDate  | String |  O  | 검색 종료 일자 (`yyyyMMdd`)              |
+|  sortBy  | String |  O  | 정렬 기준 (default: `ID`)<br>ID: 기업 ID |
+|  order   | String |  O  | 정렬 방향 (default: `DESC`)            |
+
+#### Response
+|          Field          |  Type   | MOC | Description |
+|:-----------------------:|:-------:|:--:|-------------|
+|         number          | Number  |  M | Page 번호     | 
+|          size           | Number  |  M | Page 크기     |
+|       totalPages        | Number  |  M | 전체 Page 수   |
+|      totalElements      | Number  |  M | 전체 항목 수     |
+|    numberOfElements     | Number  |  M | Page 당 항목 수 |
+|          first          | Boolean |  M | 첫 Page 여부   |
+|          last           | Boolean |  M | 마지막 Page 여부 |
+|         content         |  Array  |  M | 기업 정보 목록    |
+|       content.id        | Number  |  M | 기업 ID       |
+|      content.name       | String  |  M | 기업명         |
+|     content.locale      | Object  |  O | 위치 정보       |
+| content.locale.country  | String  |  O  | 국가          |
+| content.locale.locality | String  |  O | 소재지         |
+|  content.locale.region  | String  |  O | 지역          |
 
 ---
 
@@ -173,7 +209,7 @@
 |        first        | Boolean |  M  | 첫 Page 여부   |
 |        last         | Boolean |  M  | 마지막 Page 여부 |
 |       content       |  Array  |  M  | 채용 공고 정보 목록 |
- |     content.id      | Number  |  M  | 채용 공고 ID    |
+ |     content.id      | Number  |  M  | 공고 ID       |
  | content.companyName | String  |  M  | 기업명         |
  |   content.jobType   | String  |  M  | 직무          |
  |   content.locale    | String  |  M  | 위치          |
@@ -182,16 +218,16 @@
 ---
 
 ### 공고 랭킹 정보 조회 API
-| 구분  | 정보                                                                 |
-|:---:|--------------------------------------------------------------------|
-| 정의  | 채용 공고 관련 랭킹 조회 API<br>- 공고가 가장 많은 회사 TOP 3<br>- 공고가 가장 많은 국가 TOP 3 |
-| URL | `GET /api/v1/job-post/ranking?type={type}&limit={limit}`           |
+| 구분  | 정보                                                                   |
+|:---:|----------------------------------------------------------------------|
+| 정의  | 채용 공고 관련 랭킹 조회 API<br>- 공고가 가장 많은 회사 TOP 순위<br>- 공고가 가장 많은 국가 TOP 순위 |
+| URL | `GET /api/v1/job-post/ranking?type={type}&limit={limit}`             |
 
 #### Request
-| Field |  Type  | MOC | Description                                                      |
-|:-----:|:------:|:---:|------------------------------------------------------------------|
-| type  | String |  O  | 랭킹 조회 구분 (default- null: 전체)<br>COMPANY: 회사 랭킹<br>COUNTRY: 국가 랭킹 |
-| limit | Number |  O  | 랭킹 목록 크기                                                         | 
+| Field |  Type  | MOC | Description                                                            |
+|:-----:|:------:|:---:|------------------------------------------------------------------------|
+| type  | String |  O  | 랭킹 조회 구분 (default- null: 전체)<br>COMPANY: 회사 기준 랭킹<br>COUNTRY: 국가 기준 랭킹 |
+| limit | Number |  O  | 랭킹 목록 크기                                                               | 
 
 #### Response
 | Field  |  Type  | MOC | Description                                  |
