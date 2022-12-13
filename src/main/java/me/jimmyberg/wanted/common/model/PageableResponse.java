@@ -1,18 +1,27 @@
 package me.jimmyberg.wanted.common.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.data.domain.Page;
 
 import java.util.List;
 
 public abstract class PageableResponse<T> {
 
+    @Schema(description = "Page 번호")
     private int number;
+    @Schema(description = "Page 크기")
     private int size;
+    @Schema(description = "전체 Page 수")
     private int totalPages;
+    @Schema(description = "전체 항목 수")
     private long totalElements;
+    @Schema(description = "Page 당 항목 수")
     private int numberOfElements;
+    @Schema(description = "첫 Page 여부")
     private boolean first;
+    @Schema(description = "마지막 Page 여부")
     private boolean last;
+    @Schema(description = "Content 정보")
     private List<T> content;
 
     public PageableResponse(Page<T> pageable) {
