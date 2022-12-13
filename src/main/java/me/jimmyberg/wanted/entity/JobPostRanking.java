@@ -1,13 +1,13 @@
 package me.jimmyberg.wanted.entity;
 
+import me.jimmyberg.wanted.common.entity.BaseEntity;
 import me.jimmyberg.wanted.common.enumerate.JobPostRankingType;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Table(name = "JOB_POST_RANKING")
 @Entity
-public class JobPostRanking {
+public class JobPostRanking extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,8 +16,6 @@ public class JobPostRanking {
     private JobPostRankingType type;
     private String ranker;
     private long count;
-    private LocalDateTime created;
-    private LocalDateTime updated;
 
     public JobPostRanking count() {
         this.count++;
@@ -54,22 +52,6 @@ public class JobPostRanking {
 
     public void setCount(long count) {
         this.count = count;
-    }
-
-    public LocalDateTime getCreated() {
-        return created;
-    }
-
-    public void setCreated(LocalDateTime created) {
-        this.created = created;
-    }
-
-    public LocalDateTime getUpdated() {
-        return updated;
-    }
-
-    public void setUpdated(LocalDateTime updated) {
-        this.updated = updated;
     }
 
 }
