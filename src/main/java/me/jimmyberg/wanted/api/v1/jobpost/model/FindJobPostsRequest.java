@@ -2,7 +2,7 @@ package me.jimmyberg.wanted.api.v1.jobpost.model;
 
 import me.jimmyberg.wanted.common.model.PageableRequest;
 
-public class GetJobPostsRequest {
+public class FindJobPostsRequest {
 
     private PageableRequest pageable;
 

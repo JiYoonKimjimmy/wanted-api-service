@@ -1,7 +1,7 @@
 package me.jimmyberg.wanted.repository.jobpost;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import me.jimmyberg.wanted.api.v1.jobpost.model.GetJobPostsRequest;
+import me.jimmyberg.wanted.api.v1.jobpost.model.FindJobPostsRequest;
 import me.jimmyberg.wanted.entity.JobPost;
 import me.jimmyberg.wanted.entity.QJobPost;
 import org.springframework.data.domain.Page;
@@ -12,7 +12,7 @@ import java.util.List;
 
 public interface JobPostQRepository {
 
-    Page<JobPost> findAllBy(GetJobPostsRequest request);
+    Page<JobPost> findAllBy(FindJobPostsRequest request);
 
     class JobPostQRepositoryImpl implements JobPostQRepository {
 
@@ -23,7 +23,7 @@ public interface JobPostQRepository {
         }
 
         @Override
-        public Page<JobPost> findAllBy(GetJobPostsRequest request) {
+        public Page<JobPost> findAllBy(FindJobPostsRequest request) {
             QJobPost entity = QJobPost.jobPost;
             PageRequest pageable = request.getPageable().toPageRequest();
 

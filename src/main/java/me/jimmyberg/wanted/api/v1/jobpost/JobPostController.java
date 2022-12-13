@@ -1,8 +1,8 @@
 package me.jimmyberg.wanted.api.v1.jobpost;
 
-import me.jimmyberg.wanted.api.v1.jobpost.model.GetJobPostsRequest;
-import me.jimmyberg.wanted.api.v1.jobpost.model.GetJobPostsResponse;
-import me.jimmyberg.wanted.entity.JobPost;
+import me.jimmyberg.wanted.api.v1.jobpost.model.FindJobPostsRequest;
+import me.jimmyberg.wanted.api.v1.jobpost.model.FindJobPostsResponse;
+import me.jimmyberg.wanted.api.v1.jobpost.model.JobPostModel;
 import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/api/v1")
@@ -16,12 +16,12 @@ public class JobPostController {
     }
 
     @PostMapping("/job-posts")
-    public GetJobPostsResponse findAll(@RequestBody GetJobPostsRequest request) {
+    public FindJobPostsResponse findAll(@RequestBody FindJobPostsRequest request) {
         return jobPostService.findAll(request);
     }
 
     @GetMapping("/job-post/{id}")
-    public JobPost findOne(@PathVariable long id) {
+    public JobPostModel findOne(@PathVariable long id) {
         return jobPostService.findOne(id);
     }
 
