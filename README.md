@@ -178,7 +178,7 @@ spring:
 |      Field      |  Type  | MOC | Description |
 |:---------------:|:------:|:---:|-------------|
 |    companyId    | String |  M  | 기업 ID       |
-|     jobType     | String |  M  | 직무          |
+|     jobType     | String |  M  | 직무 정보       |
 |     locale      | Object |  M  | 위치 정보       |
 | locale.country  | String |  M  | 국가          |
 | locale.locality | String |  O  | 소재지         |
@@ -221,8 +221,8 @@ spring:
 |       content       |  Array  |  M  | 채용 공고 정보 목록 |
  |     content.id      | Number  |  M  | 공고 ID       |
  | content.companyName | String  |  M  | 기업명         |
- |   content.jobType   | String  |  M  | 직무          |
- |   content.locale    | String  |  M  | 위치          |
+ |   content.jobType   | String  |  M  | 직무 정보       |
+ |   content.locale    | String  |  M  | 위치 정보       |
  |   content.posted    | String  |  M  | 공고 등록 일자    |
 
 ---
@@ -242,8 +242,8 @@ spring:
 #### Response
 | Field  |  Type  | MOC | Description                                  |
 |:------:|:------:|:---:|----------------------------------------------|
-|  type  | String |  M  | 랭킹 조회 구분<br>COMPANY: 회사 랭킹<br>COUNTRY: 국가 랭킹 |
 |  rank  | Number |  M  | 랭킹 순위                                        |
+|  type  | String |  M  | 랭킹 조회 구분<br>COMPANY: 회사 랭킹<br>COUNTRY: 국가 랭킹 |
 | ranker | String |  M  | 랭킹 정보                                        |
 | count  | Number |  M  | 공고 등록 건수                                     |
 

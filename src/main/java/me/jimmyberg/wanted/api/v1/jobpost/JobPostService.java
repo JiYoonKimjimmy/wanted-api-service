@@ -27,12 +27,12 @@ public class JobPostService {
      */
     public SaveJobPostResponse save(SaveJobPostRequest request) {
         Company company = companyService.findById(request.getCompanyId()).orElseThrow();
-        JobPost jobPost = jobPostRepository.save(new JobPost(request, company));
+        JobPost jobPost = jobPostRepository.save(JobPost.of(request, company));
 
         // job post ranking count 증가 처리
         jobPostRankingService.count(jobPost);
 
-        return new SaveJobPostResponse(jobPost.getId());
+        return SaveJobPostResponse.of(jobPost.getId());
     }
 
     /**

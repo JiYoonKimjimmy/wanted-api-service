@@ -25,14 +25,13 @@ public class JobPost extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private Company company;
 
-    public JobPost() {
-    }
-
-    public JobPost(SaveJobPostRequest request, Company company) {
-        this.jobType = request.getJobType();
-        this.locale = request.getLocale();
-        this.company = company;
-        this.posted = LocalDateTime.now();
+    public static JobPost of(SaveJobPostRequest request, Company company) {
+        JobPost entity = new JobPost();
+        entity.setJobType(request.getJobType());
+        entity.setLocale(request.getLocale());
+        entity.setCompany(company);
+        entity.setPosted(LocalDateTime.now());
+        return entity;
     }
 
     /**

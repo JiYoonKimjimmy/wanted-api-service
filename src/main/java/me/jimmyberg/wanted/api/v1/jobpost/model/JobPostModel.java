@@ -1,5 +1,6 @@
 package me.jimmyberg.wanted.api.v1.jobpost.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import me.jimmyberg.wanted.entity.JobPost;
 
 import java.time.LocalDateTime;
@@ -9,22 +10,24 @@ import java.util.stream.Stream;
 
 public class JobPostModel {
 
+    @Schema(description = "기업 ID")
     private long id;
+    @Schema(description = "기업명")
     private String companyName;
+    @Schema(description = "직무")
     private String jobType;
+    @Schema(description = "위치 정보")
     private String locale;
+    @Schema(description = "공고 등록 일자")
     private LocalDateTime posted;
 
-    public JobPostModel() {
-    }
-
-    public static JobPostModel of(JobPost jobPost) {
+    public static JobPostModel of(JobPost entity) {
         JobPostModel model = new JobPostModel();
-        model.setId(jobPost.getId());
-        model.setCompanyName(jobPost.getCompany().getName());
-        model.setJobType(jobPost.getJobType());
-        model.setLocale(jobPost);
-        model.setPosted(jobPost.getPosted());
+        model.setId(entity.getId());
+        model.setCompanyName(entity.getCompany().getName());
+        model.setJobType(entity.getJobType());
+        model.setLocale(entity);
+        model.setPosted(entity.getPosted());
         return model;
     }
 

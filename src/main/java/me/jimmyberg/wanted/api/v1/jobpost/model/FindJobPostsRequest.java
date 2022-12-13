@@ -3,6 +3,7 @@ package me.jimmyberg.wanted.api.v1.jobpost.model;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.Path;
+import io.swagger.v3.oas.annotations.media.Schema;
 import me.jimmyberg.wanted.common.enumerate.JobPostSortBy;
 import me.jimmyberg.wanted.common.model.PageableRequest;
 
@@ -12,6 +13,7 @@ import static me.jimmyberg.wanted.entity.QJobPost.jobPost;
 
 public class FindJobPostsRequest extends PageableRequest {
 
+    @Schema(description = "검색 문자열")
     private String text;
 
     /**
