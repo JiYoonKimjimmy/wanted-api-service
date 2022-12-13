@@ -19,6 +19,11 @@ public class JobPostRanking {
     private LocalDateTime created;
     private LocalDateTime updated;
 
+    public JobPostRanking count() {
+        this.count++;
+        return this;
+    }
+
     public long getId() {
         return id;
     }

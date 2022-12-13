@@ -52,4 +52,4 @@ Content-Type: application/json
 GET http://localhost:10010/wanted/api/v1/job-post/1
 
 ### GET find job post ranking
-GET http://localhost:10010/wanted/api/v1/job-post/ranking?limit=10
+GET http://localhost:10010/wanted/api/v1/job-post/ranking

@@ -5,6 +5,8 @@ import me.jimmyberg.wanted.common.embeddable.Locale;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Table(name = "JOB_POSTS")
 @Entity
@@ -32,6 +34,16 @@ public class JobPost {
         this.locale = request.getLocale();
         this.company = company;
         this.posted = LocalDateTime.now();
+    }
+
+    /**
+     * Repository 조회하기 위한 ranker in 절 parameter 생성
+     */
+    public List<String> rankerIn() {
+        List<String> rankerIn = new ArrayList<>();
+        if (this.company.getName() != null) rankerIn.add(this.company.getName());
+        if (this.locale.getCountry() != null) rankerIn.add(this.locale.getCountry());
+        return rankerIn;
     }
 
     public long getId() {
