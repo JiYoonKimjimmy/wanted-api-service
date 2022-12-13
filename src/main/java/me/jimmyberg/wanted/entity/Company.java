@@ -2,10 +2,7 @@ package me.jimmyberg.wanted.entity;
 
 import me.jimmyberg.wanted.common.embeddable.Locale;
 
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Table(name = "COMPANY")
@@ -13,6 +10,7 @@ import java.time.LocalDateTime;
 public class Company {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
     @Embedded

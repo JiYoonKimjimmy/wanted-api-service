@@ -1,12 +1,17 @@
 package me.jimmyberg.wanted.common.embeddable;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 import javax.persistence.Embeddable;
 
 @Embeddable
 public class Locale {
 
+    @Schema(description = "국가")
     private String country;
+    @Schema(description = "소재지")
     private String locality;
+    @Schema(description = "지역")
     private String region;
 
     public String getCountry() {

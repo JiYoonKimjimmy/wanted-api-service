@@ -1,8 +1,6 @@
 package me.jimmyberg.wanted.api.v1.jobpost;
 
-import me.jimmyberg.wanted.api.v1.jobpost.model.FindJobPostsRequest;
-import me.jimmyberg.wanted.api.v1.jobpost.model.FindJobPostsResponse;
-import me.jimmyberg.wanted.api.v1.jobpost.model.JobPostModel;
+import me.jimmyberg.wanted.api.v1.jobpost.model.*;
 import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/api/v1")
@@ -13,6 +11,11 @@ public class JobPostController {
 
     public JobPostController(JobPostService jobPostService) {
         this.jobPostService = jobPostService;
+    }
+
+    @PostMapping("/job-post")
+    public SaveJobPostResponse save(@RequestBody SaveJobPostRequest request) {
+        return jobPostService.save(request);
     }
 
     @PostMapping("/job-posts")

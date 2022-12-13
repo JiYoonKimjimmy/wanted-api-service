@@ -1,5 +1,6 @@
 package me.jimmyberg.wanted.entity;
 
+import me.jimmyberg.wanted.api.v1.jobpost.model.SaveJobPostRequest;
 import me.jimmyberg.wanted.common.embeddable.Locale;
 
 import javax.persistence.*;
@@ -10,6 +11,7 @@ import java.time.LocalDateTime;
 public class JobPost {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String jobType;
     @Embedded
@@ -21,6 +23,16 @@ public class JobPost {
     @JoinColumn(name = "COMPANY_ID")
     @ManyToOne(fetch = FetchType.LAZY)
     private Company company;
+
+    public JobPost() {
+    }
+
+    public JobPost(SaveJobPostRequest request, Company company) {
+        this.jobType = request.getJobType();
+        this.locale = request.getLocale();
+        this.company = company;
+        this.posted = LocalDateTime.now();
+    }
 
     public long getId() {
         return id;

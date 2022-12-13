@@ -1,14 +1,28 @@
+### POST save job post
+POST http://localhost:10010/wanted/api/v1/job-post
+Content-Type: application/json
+
+{
+  "companyId": 1,
+  "jobType": "서버개발",
+  "locale": {
+    "country": "Korea",
+    "locality": "Seoul",
+    "region": "Jamsil"
+  }
+}
+
 ### POST find job posts
 POST http://localhost:10010/wanted/api/v1/job-posts
 Content-Type: application/json
 
 {
-  "text": "프론트",
+  "text": "서버개발",
   "pageable": {
     "number": 0,
     "size": 10,
     "fromDate": "20221210",
-    "toDate": "20221211",
+    "toDate": "20221231",
     "sortBy": "jobType",
     "order": "DESC"
   }

@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 public class JobPostRanking {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Enumerated(EnumType.STRING)
     private JobPostRankingType type;
