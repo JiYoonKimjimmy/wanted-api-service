@@ -1,4 +1,4 @@
-# 원티드 채용 공고 검색 API
+# WANTED 채용 공고 검색 API
 
 ## 목적
 - 채용 공고 목록 검색하는 API 서비스
@@ -49,7 +49,7 @@
 
 ## Database 정보
 - H2 Database Embedded 환경
-- URL : `jdbc:h2:tcp://localhost:9092/~/h2/job-posts`
+- URL : `jdbc:h2:~/h2/wanted-job-post`
 
 ### DB 테스트 정보 등록 방법
 - 테스트 데이터는 Spring SQL 자동 init 설정을 통해 등록
